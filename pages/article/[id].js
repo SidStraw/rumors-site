@@ -49,7 +49,7 @@ const LOAD_ARTICLE = gql`
         }
       }
       articleCategories {
-        ...ArticleCategoriesData
+        ...ArticleCategoryData
       }
     }
   }
@@ -58,7 +58,7 @@ const LOAD_ARTICLE = gql`
   ${CurrentReplies.fragments.CurrentRepliesData}
   ${NewReplySection.fragments.RelatedArticleData}
   ${ArticleItem.fragments.ArticleItem}
-  ${ArticleCategories.fragments.ArticleCategoriesData}
+  ${ArticleCategories.fragments.ArticleCategoryData}
 `;
 
 const LOAD_ARTICLE_FOR_USER = gql`
@@ -72,13 +72,13 @@ const LOAD_ARTICLE_FOR_USER = gql`
         ...ArticleReplyForUser
       }
       articleCategories {
-        ...ArticleCategoriesDataForUser
+        ...ArticleCategoryDataForUser
       }
     }
   }
   ${ReplyRequestReason.fragments.ReplyRequestInfoForUser}
   ${CurrentReplies.fragments.ArticleReplyForUser}
-  ${ArticleCategories.fragments.ArticleCategoriesDataForUser}
+  ${ArticleCategories.fragments.ArticleCategoryDataForUser}
 `;
 
 function ArticlePage() {
