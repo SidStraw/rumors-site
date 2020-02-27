@@ -71,10 +71,14 @@ const LOAD_ARTICLE_FOR_USER = gql`
       articleReplies {
         ...ArticleReplyForUser
       }
+      articleCategories {
+        ...ArticleCategoriesDataForUser
+      }
     }
   }
   ${ReplyRequestReason.fragments.ReplyRequestInfoForUser}
   ${CurrentReplies.fragments.ArticleReplyForUser}
+  ${ArticleCategories.fragments.ArticleCategoriesDataForUser}
 `;
 
 function ArticlePage() {
