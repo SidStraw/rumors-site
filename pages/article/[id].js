@@ -18,6 +18,7 @@ import CurrentReplies from 'components/CurrentReplies';
 import ReplyRequestReason from 'components/ReplyRequestReason';
 import NewReplySection from 'components/NewReplySection';
 import ArticleItem from 'components/ArticleItem';
+import ArticleCategories from 'components/ArticleCategories';
 
 const LOAD_ARTICLE = gql`
   query LoadArticlePage($id: String!) {
@@ -47,6 +48,9 @@ const LOAD_ARTICLE = gql`
           }
         }
       }
+      articleCategories {
+        ...ArticleCategoriesData
+      }
     }
   }
   ${Hyperlinks.fragments.HyperlinkData}
@@ -54,6 +58,7 @@ const LOAD_ARTICLE = gql`
   ${CurrentReplies.fragments.CurrentRepliesData}
   ${NewReplySection.fragments.RelatedArticleData}
   ${ArticleItem.fragments.ArticleItem}
+  ${ArticleCategories.fragments.ArticleCategoriesData}
 `;
 
 const LOAD_ARTICLE_FOR_USER = gql`
@@ -164,6 +169,10 @@ function ArticlePage() {
             />
           ))}
         </footer>
+        <ArticleCategories
+          articleId={article.id}
+          articleCategories={article.articleCategories}
+        />
       </section>
 
       <section className="section" id="current-replies" ref={replySectionRef}>
